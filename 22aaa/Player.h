@@ -6,7 +6,7 @@ public:
 	Player();
 	~Player(void);
 	void update(sf::Time deltatime);
-	void PlayerInputs(sf::Keyboard::Key key, bool isPressed);
+	void PlayerInputs(sf::Keyboard::Key key, bool Pressed);
 	void draw(sf::RenderWindow& myWindow);
 private:
 	bool Up;
