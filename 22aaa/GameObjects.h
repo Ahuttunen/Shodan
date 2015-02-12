@@ -8,6 +8,7 @@ public:
 	virtual ~GameObjects(void);
 	virtual void draw(sf::RenderWindow& myWindow);
 	virtual void update(sf::Time deltaTime);
+	sf::Vector2f getPosition();
 protected:
 	sf::CircleShape shape;
 };
