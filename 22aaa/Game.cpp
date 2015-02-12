@@ -3,7 +3,7 @@
 
 Game::Game(void):myWindow(sf::VideoMode(1280, 720), "Melkein valmis peli", sf::Style::Close)
 {
-
+//Videomodessa voi muokata resolutiota 
 }
 
 
@@ -13,6 +13,9 @@ Game::~Game()
 }
 void Game::run()
 {
+	//Vaatii vielä aika paljon viilausta
+
+	//HUOM tätä kutsutaan mainista
 	/*sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;*/
 	while (myWindow.isOpen())
