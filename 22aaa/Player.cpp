@@ -7,7 +7,7 @@ Player::Player() :GameObjects()
 	shape.setFillColor(sf::Color(100, 250, 50));
 	shape.setPosition(180 ,200);*/
 }
-
+//asasdasd
 
 Player::~Player(void)
 {
