@@ -18,12 +18,22 @@ void Game::run()
 	//HUOM tätä kutsutaan mainista
 	/*sf::Clock clock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;*/
+	sf::Clock a;
+	sf::Time LastUpdate = sf::Time::Zero;
 	while (myWindow.isOpen())
 	{
-		
 		processEvents();
+		
+		LastUpdate += a.restart();
+		sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+	
+		while (LastUpdate > TimePerFrame)
+		{	
+		LastUpdate -= TimePerFrame;
+		player.update(TimePerFrame);
+		processEvents();
+		}
 		render();
-	}
 
 }
 void Game::processEvents()
