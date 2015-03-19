@@ -3,19 +3,20 @@
 #include <iostream>
 #include "Player.h"
 #include "GameObjects.h"
-
+#include "Enemy.h"
 
 class Game
 {
 public:
 	Game(void);
-	~Game();
+	~Game(void);
 	void run();
-private:
 	void processEvents();
 	void render();
 private:
+	
 	sf::RenderWindow myWindow;
 	Player player;
-
+	Enemy enemy;
+	sf::Clock a;
 };

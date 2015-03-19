@@ -1,25 +1,40 @@
 #include "Game.h"
 
 
-Game::Game(void):myWindow(sf::VideoMode(1280, 720), "Melkein valmis peli", sf::Style::Close)
+Game::Game(void):myWindow(sf::VideoMode(1280, 720), "Shodan", sf::Style::Close)
 {
-
+	//Videomodessa voi muokata resolutiota 
 }
 
-
-Game::~Game()
+//sassssssssss
+Game::~Game(void)
 {
 	
 }
 void Game::run()
 {
-	/*sf::Clock clock;
-	sf::Time timeSinceLastUpdate = sf::Time::Zero;*/
+	//Vaatii vielä aika paljon viilausta
+
+	//HUOM tätä kutsutaan mainista
+	sf::Clock a;
+	sf::Time LastUpdate = sf::Time::Zero;
 	while (myWindow.isOpen())
 	{
-		
 		processEvents();
+		
+		LastUpdate += a.restart();
+		sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+	
+		while (LastUpdate > TimePerFrame)
+		{	
+		LastUpdate -= TimePerFrame;
+		player.update(TimePerFrame);
+		enemy.update(TimePerFrame);
+		processEvents();
+		}
 		render();
+		
+
 	}
 
 }
@@ -56,5 +71,7 @@ void Game::render()
 {
 	myWindow.clear();
 	player.draw(myWindow);
+	enemy.DrawEnemy(myWindow);
 	myWindow.display();
+
 }
