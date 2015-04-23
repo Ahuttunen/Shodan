@@ -1,22 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "Player.h"
-#include "GameObjects.h"
+#include "Bullet.h"
 #include "Enemy.h"
-
+#include <iostream>
+#include <vector>
+#include "Backround.h"
+#include "Spawner.h"
 class Game
 {
 public:
-	Game(void);
-	~Game(void);
-	void run();
-	void processEvents();
-	void render();
+Game(void);
+void run();
+~Game(void);
 private:
-	
+
+	void processEvents();
+	void update(sf::Time deltatime);
+	void render();
+	void checkCollision();
+private:
 	sf::RenderWindow myWindow;
+	Spawner spawner;
 	Player player;
+	Backround background;
 	Enemy enemy;
-	sf::Clock a;
+	sf::Clock clock;
 };

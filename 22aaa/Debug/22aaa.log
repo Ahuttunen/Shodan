@@ -1,18 +1,20 @@
-﻿Build started 19.3.2015 18:30:59.
-     1>Project "C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
+﻿Build started 23.4.2015 17:27:07.
+     1>Project "C:\Users\Asko\Desktop\PelinKansio\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         E:\Visual studio 2013\VC\bin\CL.exe /c /I"C:\Program Files (x86)\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bullet.cpp
-         Bullet.cpp
+         E:\Visual studio 2013\VC\bin\CL.exe /c /I"C:\Program Files (x86)\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameObjects.cpp
+         GameObjects.cpp
+     1>c:\users\asko\desktop\pelinkansio\shodan\22aaa\gameobjects.cpp(6): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
        Link:
-         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\Debug\22aaa.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\Debug\22aaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\Debug\22aaa.lib" /MACHINE:X86 Debug\Backround.obj
+         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\PelinKansio\Shodan\Debug\22aaa.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\PelinKansio\Shodan\Debug\22aaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\PelinKansio\Shodan\Debug\22aaa.lib" /MACHINE:X86 Debug\Backround.obj
          Debug\Bullet.obj
          Debug\Enemy.obj
          Debug\Game.obj
          Debug\GameObjects.obj
          Debug\main.obj
          Debug\Player.obj
-         22aaa.vcxproj -> C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\Debug\22aaa.exe
-     1>Done Building Project "C:\Users\Asko\Desktop\ShodanUusin\Shodan\Shodan\Shodan\Shodan\22aaa\22aaa.vcxproj" (Build target(s)).
+         Debug\Spawner.obj
+         22aaa.vcxproj -> C:\Users\Asko\Desktop\PelinKansio\Shodan\Debug\22aaa.exe
+     1>Done Building Project "C:\Users\Asko\Desktop\PelinKansio\Shodan\22aaa\22aaa.vcxproj" (Build target(s)).
 
 Build succeeded.
 

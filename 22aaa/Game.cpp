@@ -1,43 +1,33 @@
 #include "Game.h"
 
 
-Game::Game(void):myWindow(sf::VideoMode(1280, 720), "Shodan", sf::Style::Close)
-{
-	//Videomodessa voi muokata resolutiota 
-}
+Game::Game(void) :myWindow(sf::VideoMode(640, 640), "Shodan", sf::Style::Close) {}
 
-//sassssssssss
-Game::~Game(void)
-{
-	
-}
 void Game::run()
 {
-	//Vaatii vielä aika paljon viilausta
-
-	//HUOM tätä kutsutaan mainista
-	sf::Clock a;
+	sf::Clock clock;
 	sf::Time LastUpdate = sf::Time::Zero;
 	while (myWindow.isOpen())
 	{
 		processEvents();
-		
-		LastUpdate += a.restart();
+		LastUpdate += clock.restart();
 		sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
 	
 		while (LastUpdate > TimePerFrame)
 		{	
 		LastUpdate -= TimePerFrame;
-		player.update(TimePerFrame);
-		enemy.update(TimePerFrame);
 		processEvents();
+		update(TimePerFrame);
+		spawner.update(TimePerFrame);
+		player.update(TimePerFrame);
+		player.CannonRotation(myWindow);
+		background.Scroll();
 		}
 		render();
-		
-
 	}
-
 }
+void Game::update(sf::Time deltatime)
+{}
 void Game::processEvents()
 {
 	sf::Event event;
@@ -59,6 +49,11 @@ void Game::processEvents()
 				player.PlayerInputs(event.key.code,true);
 				break;
 			}
+			case sf::Event::MouseButtonReleased:
+			{
+				player.PlayerMouseInputs(event.mouseButton.button, true);
+				break;
+			}
 			case sf::Event::Closed:
 			{
 				myWindow.close();
@@ -69,9 +64,16 @@ void Game::processEvents()
 }
 void Game::render()
 {
+	myWindow.setVerticalSyncEnabled(true);
 	myWindow.clear();
+	background.draw(myWindow);	
+	spawner.wave(myWindow);
 	player.draw(myWindow);
-	enemy.DrawEnemy(myWindow);
 	myWindow.display();
-
 }
+Game::~Game(void)
+{}
+//void Game::checkCollision()
+//{
+//	spa.checkCollision(player);
+//}

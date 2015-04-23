@@ -3,23 +3,28 @@
 
 GameObjects::GameObjects()
 {
-	//Player_Sprite.setOrigin(3,3);
+	Sprites.setOrigin(Sprites.getGlobalBounds().width*0.5, Sprites.getGlobalBounds().height*0.5);
+
 }
 
 
 GameObjects::~GameObjects()
 {
 }
-void GameObjects::update(sf::Time deltaTime)
+void GameObjects::update(sf::Time deltatime)
 {
 
 }
 void GameObjects::draw(sf::RenderWindow& myWindow)
 {
-	//Vaatii muokkausta sitten ku on pelaajalla grafiikka
 	myWindow.draw(Sprites);
-
 }
+sf::FloatRect GameObjects::bounds()
+{
+	return boundingbox = Sprites.getGlobalBounds();;
+}
+	
+
 //sf::Vector2f GameObjects::PlayerGetPosition()
 //{
 //	//Positionin saanti
@@ -33,5 +38,3 @@ void GameObjects::draw(sf::RenderWindow& myWindow)
 //{
 //	return Enemy_Sprite.getPosition();
 //}
-
-//ÅPelaajan sprite muokkaus

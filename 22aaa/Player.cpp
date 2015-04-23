@@ -3,26 +3,93 @@
 
 Player::Player() :GameObjects()
 {
-	//Pelaajan grafiikka ,asettaa sille kuvan ja positionin
-	Textures.loadFromFile("Textures/tankki.png");
+	Textures.loadFromFile("Textures/Tankinalusta.png");
 	Sprites.setTexture(Textures);
 	Sprites.setPosition(300.f,150.f);
-	//Player_Sprite.setOrigin(sf::Vector2f(25, 25));
-	Health = 100;
+
+	TowerTexture.loadFromFile("Textures/Tankin_torni.png");
+	TowerCannonSprite.setTexture(TowerTexture);
+	TowerCannonSprite.setPosition(371.f,246.f);
+
+	TowerCannonSprite.setOrigin(sf::Vector2f(TowerCannonSprite.getTexture()->getSize().x * 0.5f, TowerCannonSprite.getTexture()->getSize().y * 0.5f));
+	std::cout << TowerCannonSprite.getTexture()->getSize().x << " " << TowerCannonSprite.getTexture()->getSize().y << std::endl;
+	std::cout << TowerCannonSprite.getOrigin().x << " " <<  TowerCannonSprite.getOrigin().y<< std::endl;
+	std::cout << Sprites.getTexture()->getSize().x << " " << Sprites.getTexture()->getSize().y << std::endl;
+
 	Lives = 3;
-	alive = true;
+	Fired = false;
 	std::cout << "Pelaaja syntyi" << std::endl;
+	
 }
 
-
 Player::~Player(void)
+{}
+void Player::update(sf::Time deltatime)
 {
+	
+	int PlayerSpeed = 200;
+	sf::Vector2f moves(0, 0);
+	if (Up)
+	{ 
+		if (Sprites.getPosition().y<680)
+		{
+			moves.y += PlayerSpeed;
+		}
+		else
+		{
+			moves.y = 0;
+		}
+	}
+	if (Down)
+	{
+		if (Sprites.getPosition().y > 10)
+		{
+			moves.y -= PlayerSpeed;
+		}
+		else
+		{
+			moves.y = 0;
+		}
+	}
+	if (Left)
+	{
+		if (Sprites.getPosition().x < 1200)
+		{
+			moves.x += PlayerSpeed;
+		}
+		else
+		{
+			moves.x = 0;
+		}
+	}
+	if (Right)
+	{
+		if (Sprites.getPosition().x > 15)
+		{
+		moves.x -= PlayerSpeed;
+		}
+		else
+		{
+			moves.x = 0;
+		}
+	}
+	
+	
+
+	Sprites.move(moves * deltatime.asSeconds());
+	TowerCannonSprite.move(moves*deltatime.asSeconds());
+
+	std::vector<Bullet>::iterator it = shots.begin();
+	while (it!=shots.end())
+	{
+		it->update(deltatime);
+		it++;
+	}
 
 }
 void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 {
-	//Liikkumista varten checkaa että jos painaa esim ylös(up), niin se antaa sille arvon
-	//Pressed jolloin se liikuttaa pelajaa siihen suuntaan seuraavassa funktiossa
+
 
 	if (key == sf::Keyboard::Up)
 	{
@@ -40,90 +107,83 @@ void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 	{
 		Right = Pressed;
 	}
-	if (sf::Event::MouseButtonPressed==sf::Mouse::Left)
-	{
-		MouseLeft = Pressed;
-		std::cout << "aaaa" << std::endl;
-	}
-}
 
-void Player::update(sf::Time deltatime)
+}
+void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 {
-	//Liikkuminen vaatii vielä että checkais että ei mee yli "kuvan" y- ja x-akselilla
-	
-	int PlayerSpeed = 200;
-	sf::Vector2f moves(0, 0);
-	if (Up)
-	{ 
-		if (Sprites.getPosition().y<680)
-		{
-			moves.y += PlayerSpeed;
-		}
-		else
-		{
-			moves.y += 0;
-		}
-	}
-	if (Down)
+	if (button == sf::Mouse::Left)
 	{
-		if (Sprites.getPosition().y > 10)
-		{
-			moves.y -= PlayerSpeed;
-		}
-		else
-		{
-			moves.y -= 0;
-		}
+		Fired = true;
+		std::cout << "Painoit vasenta hiirennappainta" << std::endl;
+		fire();
 	}
-	if (Left)
-	{
-		if (Sprites.getPosition().x < 1200)
-		{
-			moves.x += PlayerSpeed;
-		}
-		else
-		{
-			moves.x += 0;
-		}
-	}
-	if (Right)
-	{
-		if (Sprites.getPosition().x > 15)
-		{
-		moves.x -= PlayerSpeed;
-		}
-		else
-		{
-			moves.x += 0;
-		}
-	}
-
-	Sprites.move(moves * deltatime.asSeconds());
 }
+void Player::fire()
+{
+	if (Fired==true)
+	{
+	Bullet newshot (getPos(),200);
+	shots.push_back(newshot); 
+	Fired = false;
+	}
 
+}
 void Player::draw(sf::RenderWindow& myWindow)
 {
-	//Tällä hetkellä vaan piirtää pallon. Vaatii muokkausta kun ollaan saatu.
-	//Pelaajalle grafiikka.
-	if (alive=true)
-	{ 
-	myWindow.draw(Sprites);
-	}
-}
-void Player::PlayerTakingDamage(int amount)
-{
-	int currentHealth = Health - amount;
-	currentHealth = Health;
-}
-void Player::PlayerIncreaseHealth(int heal)
-{
-	int newHealth = Health + heal;
-	Health = newHealth;
-	if (Health < 100)
+	std::vector<Bullet>::iterator it = shots.begin();
+	while (it != shots.end())
 	{
-		Health = 100;
+		it->loadTexture();
+		it->draw(myWindow);
+		it++;
 	}
+myWindow.draw(Sprites);
+myWindow.draw(TowerCannonSprite);
 }
+void Player::CannonRotation(sf::RenderWindow& myWindow)
+{
+	sf::Vector2f curPos = TowerCannonSprite.getPosition();
+	sf::Vector2f position = myWindow.mapPixelToCoords(sf::Mouse::getPosition(myWindow));
+	//std::cout << position.x << " "<<position.y<< std::endl;
+	const float PI = 3.14159265;
+	float dx = position.x - curPos.x;
+	float dy = position.y - curPos.y;
+	float rotation = (atan2(dy, dx)) * 180 / PI;
+	TowerCannonSprite.setRotation(rotation + 90);
+}
+sf::Vector2f Player::BulletPosition()
+{
+	std::vector<Bullet>::iterator it = shots.begin();
+	while (it != shots.end())
+	{
+		return it->getPos();
+		it++;
+	}
+
+}
+bool Player::CheckShots(GameObjects& a)
+{
+	std::vector<Bullet>::iterator it = shots.begin();
+	while (it!=shots.end())
+	{
+		if (it->getPos().y < 0)
+		{
+			std::cout << "Sasdad";
+			it = shots.erase(it);
+		}
+		else if (it->bounds().intersects(a.bounds()))
+		{
+			it = shots.erase(it);
+			return true;
+		}
+		else
+		{
+			it++;
+		}
+	}
+	return false;
+}
+
 void Player::Death()
 {
 	Lives--;
@@ -133,7 +193,4 @@ void Player::Death()
 		std::cout << "Kuolit saatana" << std::endl;
 	}
 }
-void Player::Collision()
-{
-	
-}
+
