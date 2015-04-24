@@ -126,7 +126,7 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 }
 void Player::Shoot()
 {
-	PlayerBullet _newshot(getPos(), TowerCannonSprite.getRotation());
+	PlayerBullet _newshot(getPos(), rotation);
 	_shots.push_back(_newshot);
 }
 void Player::fire()
@@ -165,7 +165,7 @@ void Player::CannonRotation(sf::RenderWindow& myWindow)
 	const float PI = 3.14159265;
 	float dx = position.x - curPos.x;
 	float dy = position.y - curPos.y;
-	float rotation = (atan2(dy, dx)) * 180 / PI;
+	 rotation = (atan2(dy, dx)) * 180 / PI;
 	TowerCannonSprite.setRotation(rotation + 90);
 }
 sf::Vector2f Player::BulletPosition()

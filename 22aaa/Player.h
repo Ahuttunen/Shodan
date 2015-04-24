@@ -22,11 +22,11 @@ public:
 	void Death();
 	bool CheckShots(GameObjects&a);
 	float ShootAngle();
+	float rotation;
 private:
 	std::vector<Bullet>shots;
 
 	std::vector<PlayerBullet>_shots;
-
 	bool MouseLeft;
 	bool Up;
 	bool Down;
