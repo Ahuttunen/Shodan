@@ -22,6 +22,5 @@ private:
 	int EnemyHealth;
 	sf::Clock _clock;
 	std::vector<Bullet>shots;
-	int a;
 };
 

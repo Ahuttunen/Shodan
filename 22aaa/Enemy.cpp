@@ -8,7 +8,6 @@ Enemy::Enemy()
 	Sprites.setPosition((rand()%520+100), - Sprites.getGlobalBounds().height-200.f);
 	EnemyHealth = 3;
 	srand(time(NULL));
-	a = rand() % 2;
 }
 Enemy::~Enemy(void)
 {

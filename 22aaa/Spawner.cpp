@@ -44,28 +44,14 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 	
 }
 
-//void Spawner::checkCollision(Player &p)
-//{
-//	std::vector<Enemy>::iterator it = Enemyz.begin();
-//	while (it !=Enemyz.end())
-//	{
-//		if (p.CheckShots(*it))
-//		{
-//			it->GettingHit();
-//			if (it->GetEnemyHealth()<=0)
-//			{
-//				it->DeathtoEnemy();
-//				
-//					if (!Enemyz.empty())
-//					{
-//						it = Enemyz.erase(it);
-//						it = Enemyz.begin();
-//					}
-//				
-//			}
-//		}
-//	}
-//}
+void Spawner::checkCollision()
+{
+	std::vector<Enemy>::iterator it = Enemyz.begin();
+	while (it!=Enemyz.end())
+	{
+		
+	}
+}
 
 void Spawner::update(sf::Time deltatime)
 {

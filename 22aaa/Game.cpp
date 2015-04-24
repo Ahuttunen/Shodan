@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::Game(void) :myWindow(sf::VideoMode(640, 640), "Shodan", sf::Style::Close) {}
+Game::Game(void) :myWindow(sf::VideoMode(640, 640,60), "Shodan", sf::Style::Close) {}
 
 void Game::run()
 {

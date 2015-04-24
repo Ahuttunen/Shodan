@@ -85,25 +85,31 @@ void Player::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
+	std::vector<PlayerBullet>::iterator at = _shots.begin();
+	while (at!=_shots.end())
+	{
+		at->update(deltatime);
+		at++;
+	}
 
 }
 void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 {
 
 
-	if (key == sf::Keyboard::Up)
+	if (key == sf::Keyboard::W)
 	{
 		Up = Pressed;
 	}
-	if (key == sf::Keyboard::Down)
+	if (key == sf::Keyboard::S)
 	{
 		Down = Pressed;
 	}
-	if (key == sf::Keyboard::Left)
+	if (key == sf::Keyboard::A)
 	{
 		Left = Pressed;
 	}
-	if (key == sf::Keyboard::Right)
+	if (key == sf::Keyboard::D)
 	{
 		Right = Pressed;
 	}
@@ -115,17 +121,21 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 	{
 		Fired = true;
 		std::cout << "Painoit vasenta hiirennappainta" << std::endl;
-		fire();
+		Shoot();
 	}
+}
+void Player::Shoot()
+{
+	PlayerBullet _newshot(getPos(), TowerCannonSprite.getRotation());
+	_shots.push_back(_newshot);
 }
 void Player::fire()
 {
-	if (Fired==true)
-	{
+	
 	Bullet newshot (getPos(),200);
 	shots.push_back(newshot); 
-	Fired = false;
-	}
+
+	
 
 }
 void Player::draw(sf::RenderWindow& myWindow)
@@ -136,6 +146,13 @@ void Player::draw(sf::RenderWindow& myWindow)
 		it->loadTexture();
 		it->draw(myWindow);
 		it++;
+	}
+	std::vector<PlayerBullet>::iterator at = _shots.begin();
+	while (at != _shots.end())
+	{
+		at->loadTextures();
+		at->draw(myWindow);
+		at++;
 	}
 myWindow.draw(Sprites);
 myWindow.draw(TowerCannonSprite);
@@ -164,17 +181,17 @@ sf::Vector2f Player::BulletPosition()
 bool Player::CheckShots(GameObjects& a)
 {
 	std::vector<Bullet>::iterator it = shots.begin();
-	while (it!=shots.end())
+	while (it !=shots.end())
 	{
 		if (it->getPos().y < 0)
 		{
-			std::cout << "Sasdad";
+			std::cout << "Ammus" << std::endl;
 			it = shots.erase(it);
 		}
-		else if (it->bounds().intersects(a.bounds()))
+		else	if (it ->bounds().intersects(a.bounds()))
 		{
+			std::cout << "Ammus" << std::endl;
 			it = shots.erase(it);
-			return true;
 		}
 		else
 		{
@@ -187,7 +204,7 @@ bool Player::CheckShots(GameObjects& a)
 void Player::Death()
 {
 	Lives--;
-	if (Lives <=0)
+	if (Lives ==0)
 	{
 		//tähän jotakin hauskaa
 		std::cout << "Kuolit saatana" << std::endl;

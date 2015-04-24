@@ -1,6 +1,7 @@
 #include "GameObjects.h"
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
+#include "PlayerBullet.h"
 #include "Enemy.h"
 #include "GameObjects.h"
 #include <utility>
@@ -15,14 +16,17 @@ public:
 	void draw(sf::RenderWindow& myWindow);
 	void CannonRotation(sf::RenderWindow& myWindow);
 	void fire();
+	void Shoot();
+	void PlayerFire();
 	sf::Vector2f BulletPosition();
-	void PlayerTakingDamage(int amount);
-	void PlayerIncreaseHealth(int heal);
 	void Death();
 	bool CheckShots(GameObjects&a);
-	
+	float ShootAngle();
 private:
 	std::vector<Bullet>shots;
+
+	std::vector<PlayerBullet>_shots;
+
 	bool MouseLeft;
 	bool Up;
 	bool Down;

@@ -14,24 +14,24 @@ Backround::Backround()
 Backround::~Backround(void)
 {
 }
-void Backround::draw(sf::RenderWindow& mWindow)
+void Backround::draw(sf::RenderWindow& myWindow)
 {
 
-	mWindow.draw(BSprite);
+	myWindow.draw(BSprite);
 	if (BSprite.getPosition().y > 0)
 	{
-		mWindow.draw(BSprite2);
+		myWindow.draw(BSprite2);
 
-		if (BSprite2.getPosition().y > mWindow.getSize().y)
+		if (BSprite2.getPosition().y > myWindow.getSize().y)
 		{
 			BSprite2.setPosition(0, BSprite.getGlobalBounds().top - BSprite3.getGlobalBounds().height);
 		}
 	}
 	if (BSprite2.getPosition().y > 0)
 	{
-		mWindow.draw(BSprite3);
+		myWindow.draw(BSprite3);
 
-		if (BSprite3.getPosition().y > mWindow.getSize().y)
+		if (BSprite3.getPosition().y > myWindow.getSize().y)
 		{
 			BSprite3.setPosition(0, BSprite.getGlobalBounds().top - BSprite.getGlobalBounds().height);
 		}
