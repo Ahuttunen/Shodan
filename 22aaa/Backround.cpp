@@ -10,7 +10,7 @@ Backround::Backround()
 	BSprite3 = BSprite;
 }
 
-
+//sdfsdfsfsdfsdfsdfssffsfssffsfs
 Backround::~Backround(void)
 {
 }
