@@ -21,11 +21,6 @@ void Bullet::update(sf::Time deltatime)
 
 	Sprites.move(movement * deltatime.asSeconds());
 	
-	
-	
-	
-
-
 }
 
 

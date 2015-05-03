@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::Game(void) :myWindow(sf::VideoMode(640, 640,60), "Shodan", sf::Style::Close) {}
+Game::Game(void) :myWindow(sf::VideoMode(640, 640), "Shodan", sf::Style::Close) {}
 
 void Game::run()
 {
@@ -11,7 +11,7 @@ void Game::run()
 	{
 		processEvents();
 		LastUpdate += clock.restart();
-		sf::Time TimePerFrame = sf::seconds(1.f / 60.f);
+		sf::Time TimePerFrame = sf::seconds(1.f /60.f);
 	
 		while (LastUpdate > TimePerFrame)
 		{	
@@ -22,6 +22,7 @@ void Game::run()
 		player.update(TimePerFrame);
 		player.CannonRotation(myWindow);
 		background.Scroll();
+		CollisionChecker();
 		}
 		render();
 	}
@@ -64,7 +65,7 @@ void Game::processEvents()
 }
 void Game::render()
 {
-	myWindow.setVerticalSyncEnabled(true);
+	
 	myWindow.clear();
 	background.draw(myWindow);	
 	spawner.wave(myWindow);
@@ -73,7 +74,7 @@ void Game::render()
 }
 Game::~Game(void)
 {}
-//void Game::checkCollision()
-//{
-//	spa.checkCollision(player);
-//}
+void Game::	CollisionChecker()
+{
+	spawner.checkCollision(player);
+}

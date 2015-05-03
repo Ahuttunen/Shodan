@@ -18,12 +18,11 @@ private:
 	void processEvents();
 	void update(sf::Time deltatime);
 	void render();
-	void checkCollision();
+	void CollisionChecker();
 private:
 	sf::RenderWindow myWindow;
 	Spawner spawner;
 	Player player;
 	Backround background;
-	Enemy enemy;
 	sf::Clock clock;
 };

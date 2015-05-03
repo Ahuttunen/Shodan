@@ -4,9 +4,6 @@
 Spawner::Spawner()
 {
 }
-
-
-
 void Spawner::wave(sf::RenderWindow &myWindow)
 {	
 	//Enemyn spawnaamiseen k‰ytet‰‰n randomi generoitia ajallisesti
@@ -40,16 +37,43 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 	//The returned rectangle is in local coordinates, which means that it ignores the transformations(translation, rotation, scale, ...) that are applied to the entity.
 	//In other words, this function returns the bounds of the entity in the entity's coordinate system.
 	//Eri waweille joutuu tekem‰‰n uuvestaan saman
-	//Puttuu ett‰ monta tunkee sinne (random generointi???)
+
 	
 }
 
-void Spawner::checkCollision()
+void Spawner::checkCollision(Player &p)
 {
-	std::vector<Enemy>::iterator it = Enemyz.begin();
-	while (it!=Enemyz.end())
+	std::vector<Enemy>::iterator at = Enemyz.begin();
+	while (at!=Enemyz.end())
 	{
-		
+		if (p.CheckShots(*at))
+		{
+			at->GettingHit();
+			if (at->GetEnemyHealth() <=0)
+			{
+				at->DeathtoEnemy();
+				if (at->GetEnemyHealth()==0)
+				{ 
+				if (!Enemyz.empty())
+				{
+					at = Enemyz.erase(at);
+					at = Enemyz.begin();
+				}
+				}
+			}
+		}
+
+	if (p.bounds().intersects(at->bounds()))
+	{
+		if (at->Check())
+		{
+			p.Death();
+		}
+	}
+	if (!Enemyz.empty())
+	{
+		at++;
+	}
 	}
 }
 

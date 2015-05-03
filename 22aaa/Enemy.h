@@ -14,7 +14,7 @@ public:
 	virtual	void loadTextures();
 	virtual	void GettingHit();
 	virtual	int GetEnemyHealth();
-	bool checkBullet(GameObjects& g);
+	bool checkBullet(GameObjects& a);
 	void DeathtoEnemy();
 	virtual bool Check();
 private:

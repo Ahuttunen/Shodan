@@ -1,30 +1,11 @@
-﻿Build started 24.4.2015 11:57:43.
-     1>Project "C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3.5.2015 10:23:36.
+     1>Project "C:\Users\Asko\Desktop\klooni\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\TTV14SAkiI\Desktop\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Backround.cpp Bullet.cpp Enemy.cpp Game.cpp GameObjects.cpp main.cpp Player.cpp PlayerBullet.cpp Spawner.cpp
+         E:\Visual studio 2013\VC\bin\CL.exe /c /I"C:\Program Files (x86)\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Spawner.cpp
          Spawner.cpp
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\spawner.cpp(14): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         PlayerBullet.cpp
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\playerbullet.cpp(9): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\playerbullet.cpp(24): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\playerbullet.cpp(31): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\playerbullet.cpp(32): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-         Player.cpp
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\player.cpp(165): warning C4305: 'initializing' : truncation from 'double' to 'const float'
-         main.cpp
-         GameObjects.cpp
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\gameobjects.cpp(6): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Game.cpp
-         Enemy.cpp
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\enemy.cpp(8): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\enemy.cpp(10): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\enemy.cpp(19): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Bullet.cpp
-         Backround.cpp
-         Generating Code...
-     1>c:\users\ttv14sakii\desktop\jjjj\shodan\22aaa\player.cpp(180): warning C4715: 'Player::BulletPosition' : not all control paths return a value
+     1>c:\users\asko\desktop\klooni\shodan\22aaa\spawner.cpp(11): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\Debug\22aaa.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\TTV14SAkiI\Desktop\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\Debug\22aaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\Debug\22aaa.lib" /MACHINE:X86 Debug\Backround.obj
+         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.lib" /MACHINE:X86 Debug\Backround.obj
          Debug\Bullet.obj
          Debug\Enemy.obj
          Debug\Game.obj
@@ -33,9 +14,9 @@
          Debug\Player.obj
          Debug\PlayerBullet.obj
          Debug\Spawner.obj
-         22aaa.vcxproj -> C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\Debug\22aaa.exe
-     1>Done Building Project "C:\Users\TTV14SAkiI\Desktop\jjjj\Shodan\22aaa\22aaa.vcxproj" (Build target(s)).
+         22aaa.vcxproj -> C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.exe
+     1>Done Building Project "C:\Users\Asko\Desktop\klooni\Shodan\22aaa\22aaa.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.25
+Time Elapsed 00:00:00.74

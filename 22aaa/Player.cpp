@@ -121,20 +121,24 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 	{
 		Fired = true;
 		std::cout << "Painoit vasenta hiirennappainta" << std::endl;
-		Shoot();
+		fire();
 	}
 }
-void Player::Shoot()
-{
-	PlayerBullet _newshot(getPos(), rotation);
-	_shots.push_back(_newshot);
-}
+
 void Player::fire()
 {
-	
+	if (Fired == true)
+	{
+		Bullet newshot(getPos(), 200);
+		shots.push_back(newshot);
+	//PlayerBullet _newshot(getPos(), rotation);
+	//_shots.push_back(_newshot);
+	}
+	else 
+	{ 
 	Bullet newshot (getPos(),200);
 	shots.push_back(newshot); 
-
+	}
 	
 
 }
@@ -183,15 +187,17 @@ bool Player::CheckShots(GameObjects& a)
 	std::vector<Bullet>::iterator it = shots.begin();
 	while (it !=shots.end())
 	{
+		//Jos ammus ei osu Spriteen vaan menee yli laijan niin se poistetaan
 		if (it->getPos().y < 0)
 		{
 			std::cout << "Ammus" << std::endl;
 			it = shots.erase(it);
 		}
-		else	if (it ->bounds().intersects(a.bounds()))
+		else if (it ->bounds().intersects(a.bounds()))
 		{
-			std::cout << "Ammus" << std::endl;
+			//Jos ammus osuu spriteen niin silloin se myös poistetaan mutta myös lähetetään true value
 			it = shots.erase(it);
+			return true;
 		}
 		else
 		{
@@ -203,6 +209,7 @@ bool Player::CheckShots(GameObjects& a)
 
 void Player::Death()
 {
+	Sprites.setPosition(300.f,350.f);
 	Lives--;
 	if (Lives ==0)
 	{

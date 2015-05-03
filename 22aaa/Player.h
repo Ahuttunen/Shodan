@@ -1,3 +1,4 @@
+#pragma once
 #include "GameObjects.h"
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
@@ -16,23 +17,18 @@ public:
 	void draw(sf::RenderWindow& myWindow);
 	void CannonRotation(sf::RenderWindow& myWindow);
 	void fire();
-	void Shoot();
-	void PlayerFire();
 	sf::Vector2f BulletPosition();
 	void Death();
 	bool CheckShots(GameObjects&a);
-	float ShootAngle();
-	float rotation;
 private:
 	std::vector<Bullet>shots;
-
 	std::vector<PlayerBullet>_shots;
 	bool MouseLeft;
+	float rotation;
 	bool Up;
 	bool Down;
 	bool Left;
 	bool Right;
-	int Health;
 	int Lives;
 	bool Fired;
 	sf::Clock clock;

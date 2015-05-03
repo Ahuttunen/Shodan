@@ -45,7 +45,7 @@ void Backround::draw(sf::RenderWindow& myWindow)
 void Backround::Scroll()
 {
 	sf::Time time = sf::seconds(1.f / 60.f);
-	int speed = 400;
+	int speed = 300;
 	sf::Vector2f scrollDown(0, 0);
 	scrollDown.y += speed;
 	BSprite.move(scrollDown * time.asSeconds());

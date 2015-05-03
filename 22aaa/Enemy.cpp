@@ -6,7 +6,7 @@ Enemy::Enemy()
 {
 	srand((rand()&540+100));
 	Sprites.setPosition((rand()%520+100), - Sprites.getGlobalBounds().height-200.f);
-	EnemyHealth = 3;
+	EnemyHealth = 1;
 	srand(time(NULL));
 }
 Enemy::~Enemy(void)
@@ -17,18 +17,13 @@ void Enemy::loadTextures()
 Textures.loadFromFile("Textures/tankki.png");
 Sprites.setTexture(Textures);
 Sprites.setOrigin(Textures.getSize().x*0.5,Textures.getSize().y*0.5);
-EnemyisAlive = true;
+
 }
 void Enemy::update(sf::Time deltatime)
 {
-	if (EnemyisAlive)
-	{
-		sf::Vector2f movement(0, 0);
-		movement.y += 500;
-		Sprites.move(movement * deltatime.asSeconds());
-
-	}
-	
+	sf::Vector2f movement(0, 0);
+	movement.y += 100;
+	Sprites.move(movement * deltatime.asSeconds());
 	std::vector<Bullet>::iterator it = shots.begin();
 	while (it !=shots.end())
 	{
@@ -75,6 +70,8 @@ void Enemy::Attack()
 	Bullet newshot(getPos(), -500);
 	shots.push_back(newshot);
 }
+
+
 void Enemy::GettingHit()
 {
 	EnemyHealth--;
