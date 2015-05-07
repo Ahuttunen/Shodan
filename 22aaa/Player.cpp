@@ -129,10 +129,17 @@ void Player::fire()
 {
 	if (Fired == true)
 	{
-		Bullet newshot(getPos(), 200);
-		shots.push_back(newshot);
-	//PlayerBullet _newshot(getPos(), rotation);
-	//_shots.push_back(_newshot);
+		float MouseX = sf::Mouse::getPosition().x;
+		float MouseY = sf::Mouse::getPosition().y;
+		float BulletX = getPos().x;
+		float BulletY = getPos().y;
+		float angleX = MouseX - BulletX;
+		float angleY = MouseY - BulletY;
+		float length = sqrt(angleX*angleX+angleY*angleY);
+		float dx = angleX / length;
+		float dy= angleY / length;
+	PlayerBullet _newshot(dx,dy);
+	_shots.push_back(_newshot);
 	}
 	else 
 	{ 

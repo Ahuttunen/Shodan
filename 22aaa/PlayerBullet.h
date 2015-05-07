@@ -6,10 +6,12 @@
 class PlayerBullet : public GameObjects
 {
 public:
-	PlayerBullet(sf::Vector2f pos,float rotation);
+	PlayerBullet(float a,float b);
 	~PlayerBullet();
 	void update(sf::Time deltatime);
 	void loadTextures();
 	float GetAngle();
+private:
+	float dx, dy;
 };
 

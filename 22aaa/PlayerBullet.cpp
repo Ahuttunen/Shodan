@@ -1,12 +1,10 @@
 #include "PlayerBullet.h"
 
 
-PlayerBullet::PlayerBullet(sf::Vector2f pos,float rotation)
+PlayerBullet::PlayerBullet( float a, float b) :dx(a), dy(b)
 {
-	Sprites.setPosition(pos - sf::Vector2f(0.f, pos.y*0.1f));
-	Sprites.setRotation(rotation);
-	float angle = atan2(sf::Mouse::getPosition().y-TowerCannonPosition().y,sf::Mouse::getPosition().x-TowerCannonPosition().x);
-	angle = angle *(180 / 3.14159);
+	Sprites.setPosition(TowerCannonSprite.getPosition().x, TowerCannonSprite.getPosition().y);
+	
 }
 
 
@@ -27,11 +25,11 @@ float PlayerBullet::GetAngle()
 void PlayerBullet::update(sf::Time deltatime)
 {
 	sf::Vector2f movement(0,0);
-	float Bspeed = 5000;
-	float VelocityX = cos((GetAngle())*3.14159/180)*(Bspeed*deltatime.asSeconds());
-	float VelocityY = sin((GetAngle())*3.14159 / 180)*(Bspeed*deltatime.asSeconds());
-	movement.x += VelocityX;
-	movement.y += VelocityY;
+	float speed = 500;
+	float SpeedX = cos(dx)*speed;
+	float SpeedY = sin(dy)*speed;
+	movement.x += SpeedX;
+	movement.y += SpeedY;
 	Sprites.move(movement*deltatime.asSeconds());
 	/*float angle = 0;
 	float Bspeed = 500;
