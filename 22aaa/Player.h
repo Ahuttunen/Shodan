@@ -15,14 +15,19 @@ public:
 	void PlayerInputs(sf::Keyboard::Key key, bool Pressed);
 	void PlayerMouseInputs(sf::Mouse::Button button, bool Press);
 	void draw(sf::RenderWindow& myWindow);
-	void CannonRotation(sf::RenderWindow& myWindow);
-	void fire();
+	float CannonRotation(sf::RenderWindow& myWindow);
+	void fire(sf::RenderWindow& myWindow);
+	sf::Vector2f GetMouseDirection(sf::RenderWindow& myWindow);
 	sf::Vector2f BulletPosition();
+	sf::Vector2f BulletPositionForPlayer();
+	sf::Vector2f GetBulletForCannon();
+	float GeRot(){ return TowerCannonSprite.getRotation();}
+	sf::Vector2f GetDirection(sf::RenderWindow& myWindow);
 	void Death();
 	bool CheckShots(GameObjects&a);
 private:
+	bool Fired;
 	std::vector<Bullet>shots;
-	std::vector<PlayerBullet>_shots;
 	bool MouseLeft;
 	float rotation;
 	bool Up;
@@ -30,6 +35,5 @@ private:
 	bool Left;
 	bool Right;
 	int Lives;
-	bool Fired;
 	sf::Clock clock;
 };

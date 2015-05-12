@@ -1,26 +1,26 @@
 #include "Bullet.h"
 #include "Game.h"
 
-Bullet::Bullet(sf::Vector2f pos, int speed) : Bspeed(speed)
+Bullet::Bullet(int speed, float _rot, sf::Vector2f _pos,sf::Vector2f c) : Bspeed(speed), _Dir(c)
 {
-	Sprites.setPosition(pos - sf::Vector2f(0.f, pos.y*0.1f));
 	Sprites.setOrigin(Sprites.getGlobalBounds().width / 2, Sprites.getGlobalBounds().height / 2);
+	Sprites.setRotation(_rot);
+	Sprites.setPosition(_pos.x,_pos.y);
 }
 void Bullet::loadTexture()
 {
-	Textures.loadFromFile("Textures/BulletPlaceHolder.png");
+	Textures.loadFromFile("Textures/Bullet.png");
 	Sprites.setTexture(Textures);
 }
 
 void Bullet::update(sf::Time deltatime)
 {
-
-	sf::Vector2f movement(0.f, 0.f);
-
-	movement.y -= Bspeed;
-
-	Sprites.move(movement * deltatime.asSeconds());
-	
+	sf::Vector2f movement2(0,0);
+	sf::Vector2f movement;
+	movement.x = _Dir.x*Bspeed;
+	movement.y = _Dir.y*Bspeed;
+	movement2 = movement;
+	Sprites.move(movement2*deltatime.asSeconds());
 }
 
 

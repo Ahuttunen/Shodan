@@ -4,16 +4,12 @@
 GameObjects::GameObjects()
 {
 	Sprites.setOrigin(Sprites.getGlobalBounds().width*0.5, Sprites.getGlobalBounds().height*0.5);
-
 }
-
-
 GameObjects::~GameObjects()
 {
 }
 void GameObjects::update(sf::Time deltatime)
 {
-
 }
 void GameObjects::draw(sf::RenderWindow& myWindow)
 {

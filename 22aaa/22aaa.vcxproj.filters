@@ -45,6 +45,9 @@
     <ClCompile Include="PlayerBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -74,14 +77,11 @@
     <ClInclude Include="PlayerBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\backgroundPlaceHolder.jpg">
-      <Filter>Textures</Filter>
-    </Image>
-    <Image Include="Textures\BulletPlaceHolder.png">
-      <Filter>Textures</Filter>
-    </Image>
     <Image Include="Textures\Tankin_torni.png">
       <Filter>Textures</Filter>
     </Image>
@@ -89,6 +89,15 @@
       <Filter>Textures</Filter>
     </Image>
     <Image Include="Textures\tankki.png">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Textures\Bullet.png">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Textures\Background.png">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Textures\Explosion.png">
       <Filter>Textures</Filter>
     </Image>
   </ItemGroup>

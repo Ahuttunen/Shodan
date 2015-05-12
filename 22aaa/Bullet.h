@@ -5,10 +5,11 @@
 class Bullet: public GameObjects
 {
 public:
-	Bullet(sf::Vector2f, int speed);
+	Bullet(int speed,float _rot,sf::Vector2f _pos,sf::Vector2f c);
 	void update(sf::Time deltaTime);
 	void loadTexture();
 private:
 	int Bspeed;
+	sf::Vector2f _Dir;
 };
 

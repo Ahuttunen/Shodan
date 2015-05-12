@@ -8,8 +8,10 @@ public:
 	virtual ~GameObjects(void);
 	virtual void draw(sf::RenderWindow& myWindow);
 	virtual void update(sf::Time deltatime);
-	sf::Vector2f TowerCannonPosition(){ return TowerCannonSprite.getPosition(); }
+	sf::Vector2f TowerCannonPosition(){ return TowerCannonSprite.getPosition();}
+	float GetRotation(){ return TowerCannonSprite.getRotation(); }
 	sf::FloatRect bounds();
+	//GameObjectista kutsutaan
 	sf::Vector2f getPos(){ return Sprites.getPosition(); }
 protected:
 	sf::Texture Textures;

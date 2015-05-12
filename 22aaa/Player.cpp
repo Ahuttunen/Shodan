@@ -6,24 +6,24 @@ Player::Player() :GameObjects()
 	Textures.loadFromFile("Textures/Tankinalusta.png");
 	Sprites.setTexture(Textures);
 	Sprites.setPosition(300.f,150.f);
-
+	Sprites.setScale(0.5,0.5);
 	TowerTexture.loadFromFile("Textures/Tankin_torni.png");
 	TowerCannonSprite.setTexture(TowerTexture);
-	TowerCannonSprite.setPosition(371.f,246.f);
-
+	TowerCannonSprite.setPosition(335.5f,200.f);
+	TowerCannonSprite.setScale(0.5, 0.5);
 	TowerCannonSprite.setOrigin(sf::Vector2f(TowerCannonSprite.getTexture()->getSize().x * 0.5f, TowerCannonSprite.getTexture()->getSize().y * 0.5f));
 	std::cout << TowerCannonSprite.getTexture()->getSize().x << " " << TowerCannonSprite.getTexture()->getSize().y << std::endl;
 	std::cout << TowerCannonSprite.getOrigin().x << " " <<  TowerCannonSprite.getOrigin().y<< std::endl;
 	std::cout << Sprites.getTexture()->getSize().x << " " << Sprites.getTexture()->getSize().y << std::endl;
-
 	Lives = 3;
 	Fired = false;
 	std::cout << "Pelaaja syntyi" << std::endl;
-	
+
 }
 
 Player::~Player(void)
-{}
+{
+}
 void Player::update(sf::Time deltatime)
 {
 	
@@ -74,8 +74,6 @@ void Player::update(sf::Time deltatime)
 		}
 	}
 	
-	
-
 	Sprites.move(moves * deltatime.asSeconds());
 	TowerCannonSprite.move(moves*deltatime.asSeconds());
 
@@ -85,18 +83,9 @@ void Player::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
-	std::vector<PlayerBullet>::iterator at = _shots.begin();
-	while (at!=_shots.end())
-	{
-		at->update(deltatime);
-		at++;
-	}
-
 }
 void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 {
-
-
 	if (key == sf::Keyboard::W)
 	{
 		Up = Pressed;
@@ -113,7 +102,6 @@ void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 	{
 		Right = Pressed;
 	}
-
 }
 void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 {
@@ -121,33 +109,46 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 	{
 		Fired = true;
 		std::cout << "Painoit vasenta hiirennappainta" << std::endl;
-		fire();
+	}
+	else
+	{
+		Fired = false;
 	}
 }
-
-void Player::fire()
+void Player::fire(sf::RenderWindow& myWindow)
 {
 	if (Fired == true)
 	{
-		float MouseX = sf::Mouse::getPosition().x;
-		float MouseY = sf::Mouse::getPosition().y;
-		float BulletX = getPos().x;
-		float BulletY = getPos().y;
-		float angleX = MouseX - BulletX;
-		float angleY = MouseY - BulletY;
-		float length = sqrt(angleX*angleX+angleY*angleY);
-		float dx = angleX / length;
-		float dy= angleY / length;
-	PlayerBullet _newshot(dx,dy);
-	_shots.push_back(_newshot);
-	}
-	else 
-	{ 
-	Bullet newshot (getPos(),200);
-	shots.push_back(newshot); 
+		Bullet shot(300, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
+		shots.push_back(shot);
+		Fired = false;
 	}
 	
+}
 
+sf::Vector2f Player::GetBulletForCannon()
+{
+	const float PI = 3.14159265;
+	float rotation = GeRot();
+	sf::Vector2f aa(-5.f,-75.f);
+	sf::Vector2f aaa;
+	aaa.x = aa.x*cos(rotation*PI / 180) - aa.y*sin(rotation*PI / 180);
+	aaa.y = aa.x*sin(rotation*PI / 180) + aa.y*cos(rotation*PI / 180);
+	sf::Vector2f RotationReturn = TowerCannonSprite.getPosition() + aaa;
+	return RotationReturn;
+}
+sf::Vector2f Player::GetDirection(sf::RenderWindow& myWindow)
+{
+	sf::Vector2f Direc(0.0f, 0.0f);
+	float BulletX = Sprites.getPosition().x;
+	float BulletY = Sprites.getPosition().y;
+	sf::Vector2f pos = myWindow.mapPixelToCoords(sf::Mouse::getPosition(myWindow));
+	float AngleX = pos.x - BulletX;
+	float AngleY = pos.y - BulletY;
+	float Length = sqrt(AngleX*AngleX+AngleY+AngleY);
+	sf::Vector2f Direc2(AngleX/Length,AngleY/Length);
+	Direc = Direc2;
+	return Direc;
 }
 void Player::draw(sf::RenderWindow& myWindow)
 {
@@ -158,17 +159,10 @@ void Player::draw(sf::RenderWindow& myWindow)
 		it->draw(myWindow);
 		it++;
 	}
-	std::vector<PlayerBullet>::iterator at = _shots.begin();
-	while (at != _shots.end())
-	{
-		at->loadTextures();
-		at->draw(myWindow);
-		at++;
-	}
 myWindow.draw(Sprites);
 myWindow.draw(TowerCannonSprite);
 }
-void Player::CannonRotation(sf::RenderWindow& myWindow)
+float Player::CannonRotation(sf::RenderWindow& myWindow)
 {
 	sf::Vector2f curPos = TowerCannonSprite.getPosition();
 	sf::Vector2f position = myWindow.mapPixelToCoords(sf::Mouse::getPosition(myWindow));
@@ -176,9 +170,11 @@ void Player::CannonRotation(sf::RenderWindow& myWindow)
 	const float PI = 3.14159265;
 	float dx = position.x - curPos.x;
 	float dy = position.y - curPos.y;
-	 rotation = (atan2(dy, dx)) * 180 / PI;
+	rotation = (atan2(dy, dx)) * 180 / PI;
 	TowerCannonSprite.setRotation(rotation + 90);
+	return TowerCannonSprite.getRotation();
 }
+
 sf::Vector2f Player::BulletPosition()
 {
 	std::vector<Bullet>::iterator it = shots.begin();
@@ -187,7 +183,6 @@ sf::Vector2f Player::BulletPosition()
 		return it->getPos();
 		it++;
 	}
-
 }
 bool Player::CheckShots(GameObjects& a)
 {
@@ -195,7 +190,7 @@ bool Player::CheckShots(GameObjects& a)
 	while (it !=shots.end())
 	{
 		//Jos ammus ei osu Spriteen vaan menee yli laijan niin se poistetaan
-		if (it->getPos().y < 0)
+		if (it->getPos().y < 0 || it->getPos().y>640 || it->getPos().x<0 || it->getPos().x>640)
 		{
 			std::cout << "Ammus" << std::endl;
 			it = shots.erase(it);

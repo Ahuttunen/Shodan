@@ -12,7 +12,6 @@ void Game::run()
 		processEvents();
 		LastUpdate += clock.restart();
 		sf::Time TimePerFrame = sf::seconds(1.f /60.f);
-	
 		while (LastUpdate > TimePerFrame)
 		{	
 		LastUpdate -= TimePerFrame;
@@ -20,7 +19,10 @@ void Game::run()
 		update(TimePerFrame);
 		spawner.update(TimePerFrame);
 		player.update(TimePerFrame);
+		player.GeRot();
+		player.GetBulletForCannon();
 		player.CannonRotation(myWindow);
+		player.fire(myWindow);
 		background.Scroll();
 		CollisionChecker();
 		}
@@ -69,6 +71,7 @@ void Game::render()
 	myWindow.clear();
 	background.draw(myWindow);	
 	spawner.wave(myWindow);
+	spawner.draw(myWindow);
 	player.draw(myWindow);
 	myWindow.display();
 }

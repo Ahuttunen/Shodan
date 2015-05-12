@@ -1,5 +1,5 @@
 #include "Spawner.h"
-
+#include "Game.h"
 
 Spawner::Spawner()
 {
@@ -26,6 +26,7 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 			it = Enemyz.erase(it);
 			it = Enemyz.begin();
 		}
+		
 		if (!Enemyz.empty())
 		{
 			it++;
@@ -44,6 +45,7 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 void Spawner::checkCollision(Player &p)
 {
 	std::vector<Enemy>::iterator at = Enemyz.begin();
+	std::vector<Spawner>::iterator ot;
 	while (at!=Enemyz.end())
 	{
 		if (p.CheckShots(*at))
@@ -56,8 +58,12 @@ void Spawner::checkCollision(Player &p)
 				{ 
 				if (!Enemyz.empty())
 				{
+					sf::Vector2f aa=at->getPos();
+					Explosion ab(aa);
+					Explositions.push_back(ab);	
 					at = Enemyz.erase(at);
 					at = Enemyz.begin();
+					
 				}
 				}
 			}
@@ -76,7 +82,18 @@ void Spawner::checkCollision(Player &p)
 	}
 	}
 }
+void Spawner::draw(sf::RenderWindow& myWindow)
+{
 
+	std::vector<Explosion>::iterator az = Explositions.begin();
+	while (az != Explositions.end())
+	{
+		az->loadTexture();
+		az->draw(myWindow);
+		az++;
+
+	}
+}
 void Spawner::update(sf::Time deltatime)
 {
 	std::vector<Enemy>::iterator it = Enemyz.begin();
@@ -86,5 +103,18 @@ void Spawner::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
+
+	std::vector<Explosion>::iterator az = Explositions.begin();
+	sf::Time ExplosionTimer = sf::seconds(1);
+	while (az != Explositions.end())
+	{
+		az->update(deltatime);
+		if (timer2.getElapsedTime() > ExplosionTimer)
+		{
+			az = Explositions.erase(az);
+			az = Explositions.begin();
+	
+		}
+}
 	//Eri waweille joutuu tekem‰‰n uuvestaan saman
 }

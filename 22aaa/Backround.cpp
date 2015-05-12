@@ -1,16 +1,16 @@
 #include "Backround.h"
-
+#include <iostream>
 
 Backround::Backround()
 {
-	BTexture.loadFromFile("Textures/backgroundPlaceHolder.jpg");
+	BTexture.loadFromFile("Textures/Background.png");
 	BSprite.setTexture(BTexture);
 	BSprite.setPosition(0, -BSprite.getGlobalBounds().height);
 	BSprite2 = BSprite;
 	BSprite3 = BSprite;
 }
 
-//sdfsdfsfsdfsdfsdfssffsfssffsfs
+
 Backround::~Backround(void)
 {
 }
@@ -45,7 +45,7 @@ void Backround::draw(sf::RenderWindow& myWindow)
 void Backround::Scroll()
 {
 	sf::Time time = sf::seconds(1.f / 60.f);
-	int speed = 300;
+	int speed = 600;
 	sf::Vector2f scrollDown(0, 0);
 	scrollDown.y += speed;
 	BSprite.move(scrollDown * time.asSeconds());

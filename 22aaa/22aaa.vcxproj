@@ -89,6 +89,7 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="main.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="Backround.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="Player.h" />
@@ -108,8 +110,9 @@
     <ClInclude Include="Spawner.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\backgroundPlaceHolder.jpg" />
-    <Image Include="Textures\BulletPlaceHolder.png" />
+    <Image Include="Textures\Background.png" />
+    <Image Include="Textures\Bullet.png" />
+    <Image Include="Textures\Explosion.png" />
     <Image Include="Textures\Tankinalusta.png" />
     <Image Include="Textures\Tankin_torni.png" />
     <Image Include="Textures\tankki.png" />

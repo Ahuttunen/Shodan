@@ -65,13 +65,6 @@ bool Enemy::checkBullet(GameObjects& a)
 	}
 	return false;
 }
-void Enemy::Attack()
-{
-	Bullet newshot(getPos(), -500);
-	shots.push_back(newshot);
-}
-
-
 void Enemy::GettingHit()
 {
 	EnemyHealth--;
