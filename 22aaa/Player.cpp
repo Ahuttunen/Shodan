@@ -15,6 +15,7 @@ Player::Player() :GameObjects()
 	std::cout << TowerCannonSprite.getTexture()->getSize().x << " " << TowerCannonSprite.getTexture()->getSize().y << std::endl;
 	std::cout << TowerCannonSprite.getOrigin().x << " " <<  TowerCannonSprite.getOrigin().y<< std::endl;
 	std::cout << Sprites.getTexture()->getSize().x << " " << Sprites.getTexture()->getSize().y << std::endl;
+	Health = 1;
 	Lives = 3;
 	Fired = false;
 	std::cout << "Pelaaja syntyi" << std::endl;
@@ -209,14 +210,32 @@ bool Player::CheckShots(GameObjects& a)
 	return false;
 }
 
-void Player::Death()
+void Player::Damage()
 {
-	Sprites.setPosition(300.f,350.f);
+	Health--;
+	if (Health == 0)
+	{
+	Sprites.setPosition(300.f, 150.f);
+	TowerCannonSprite.setPosition(335.5f, 200.f);
 	Lives--;
+	Health = 1;
 	if (Lives ==0)
 	{
 		//tähän jotakin hauskaa
 		std::cout << "Kuolit saatana" << std::endl;
+		Death = true;
+	}
 	}
 }
 
+bool Player::CheckPlayerStatus()
+{
+	if (Death == true)
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}

@@ -23,8 +23,9 @@ public:
 	sf::Vector2f GetBulletForCannon();
 	float GeRot(){ return TowerCannonSprite.getRotation();}
 	sf::Vector2f GetDirection(sf::RenderWindow& myWindow);
-	void Death();
+	void Damage();
 	bool CheckShots(GameObjects&a);
+	bool CheckPlayerStatus();
 private:
 	bool Fired;
 	std::vector<Bullet>shots;
@@ -35,5 +36,7 @@ private:
 	bool Left;
 	bool Right;
 	int Lives;
+	int Health;
+	bool Death;
 	sf::Clock clock;
 };

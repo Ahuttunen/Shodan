@@ -45,7 +45,6 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 void Spawner::checkCollision(Player &p)
 {
 	std::vector<Enemy>::iterator at = Enemyz.begin();
-	std::vector<Spawner>::iterator ot;
 	while (at!=Enemyz.end())
 	{
 		if (p.CheckShots(*at))
@@ -63,18 +62,18 @@ void Spawner::checkCollision(Player &p)
 					Explositions.push_back(ab);	
 					at = Enemyz.erase(at);
 					at = Enemyz.begin();
-					
 				}
 				}
 			}
 		}
-
+	
 	if (p.bounds().intersects(at->bounds()))
 	{
-		if (at->Check())
-		{
-			p.Death();
-		}
+		at = Enemyz.erase(at);
+		at = Enemyz.begin();
+
+			p.Damage();
+		
 	}
 	if (!Enemyz.empty())
 	{
@@ -91,7 +90,6 @@ void Spawner::draw(sf::RenderWindow& myWindow)
 		az->loadTexture();
 		az->draw(myWindow);
 		az++;
-
 	}
 }
 void Spawner::update(sf::Time deltatime)

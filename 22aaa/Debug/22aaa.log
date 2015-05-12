@@ -1,9 +1,30 @@
-﻿Build started 12.5.2015 16:13:23.
+﻿Build started 12.5.2015 17:52:50.
      1>Project "C:\Users\Asko\Desktop\klooni\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         E:\Visual studio 2013\VC\bin\CL.exe /c /I"C:\Program Files (x86)\SFML-2.2\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bullet.cpp Game.cpp PlayerBullet.cpp Spawner.cpp main.cpp
+         Game.cpp
+         Generating Code...
+         Compiling...
+         main.cpp
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Spawner.cpp
+         PlayerBullet.cpp
+         Bullet.cpp
+       Link:
+         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.lib" /MACHINE:X86 Debug\Backround.obj
+         Debug\Bullet.obj
+         Debug\Enemy.obj
+         Debug\Explosion.obj
+         Debug\Game.obj
+         Debug\GameObjects.obj
+         Debug\main.obj
+         Debug\Player.obj
+         Debug\PlayerBullet.obj
+         Debug\Spawner.obj
          22aaa.vcxproj -> C:\Users\Asko\Desktop\klooni\Shodan\Debug\22aaa.exe
      1>Done Building Project "C:\Users\Asko\Desktop\klooni\Shodan\22aaa\22aaa.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.03
+Time Elapsed 00:00:01.34

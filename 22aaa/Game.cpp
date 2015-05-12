@@ -5,8 +5,10 @@ Game::Game(void) :myWindow(sf::VideoMode(640, 640), "Shodan", sf::Style::Close) 
 
 void Game::run()
 {
+	
 	sf::Clock clock;
 	sf::Time LastUpdate = sf::Time::Zero;
+	
 	while (myWindow.isOpen())
 	{
 		processEvents();
@@ -27,12 +29,15 @@ void Game::run()
 		CollisionChecker();
 		}
 		render();
+
+	
 	}
 }
 void Game::update(sf::Time deltatime)
 {}
 void Game::processEvents()
 {
+
 	sf::Event event;
 	while (myWindow.pollEvent(event))
 	{
@@ -47,6 +52,7 @@ void Game::processEvents()
 				}
 				break;
 			}
+			
 			case sf::Event::KeyReleased:
 			{
 				player.PlayerInputs(event.key.code,true);

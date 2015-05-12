@@ -20,9 +20,6 @@ void PlayerBullet::loadTextures()
 
 void PlayerBullet::update(sf::Time deltatime)
 {
-
 	sf::Vector2f movement(cos(TowerCannonSprite.getRotation()),sin(TowerCannonSprite.getRotation()));
 	Sprites.move(movement * deltatime.asSeconds()*_Bspeed);
-	
-	
 }
