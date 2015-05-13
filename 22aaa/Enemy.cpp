@@ -4,8 +4,8 @@
 
 Enemy::Enemy()
 {
-	srand((rand()&540+100));
-	Sprites.setPosition((rand()%520+100), - Sprites.getGlobalBounds().height-200.f);
+	srand((rand()&740+100));
+	Sprites.setPosition((rand()%720+100), - Sprites.getGlobalBounds().height-200.f);
 	EnemyHealth = 1;
 	srand(time(NULL));
 }
@@ -14,7 +14,7 @@ Enemy::~Enemy(void)
 }
 void Enemy::loadTextures()
 {
-Textures.loadFromFile("Textures/tankki.png");
+Textures.loadFromFile("Textures/Boss.png");
 Sprites.setTexture(Textures);
 Sprites.setOrigin(Textures.getSize().x*0.5,Textures.getSize().y*0.5);
 
@@ -22,7 +22,7 @@ Sprites.setOrigin(Textures.getSize().x*0.5,Textures.getSize().y*0.5);
 void Enemy::update(sf::Time deltatime)
 {
 	sf::Vector2f movement(0, 0);
-	movement.y += 100;
+	movement.y += 175;
 	Sprites.move(movement * deltatime.asSeconds());
 	std::vector<Bullet>::iterator it = shots.begin();
 	while (it !=shots.end())

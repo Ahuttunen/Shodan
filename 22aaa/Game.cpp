@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::Game(void) :myWindow(sf::VideoMode(640, 640), "Shodan", sf::Style::Close) {}
+Game::Game(void) :myWindow(sf::VideoMode(800, 600), "Shodan", sf::Style::Close) {}
 
 void Game::run()
 {
@@ -78,6 +78,10 @@ void Game::render()
 	background.draw(myWindow);	
 	spawner.wave(myWindow);
 	spawner.draw(myWindow);
+	if (clock2.getElapsedTime() > sf::seconds(10))
+	{
+		spawner.SpawnForBoss(myWindow);
+	}
 	player.draw(myWindow);
 	myWindow.display();
 }

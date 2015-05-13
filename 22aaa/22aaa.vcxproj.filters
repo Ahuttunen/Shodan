@@ -48,6 +48,9 @@
     <ClCompile Include="Explosion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -80,6 +83,12 @@
     <ClInclude Include="Explosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Tankin_torni.png">
@@ -98,6 +107,9 @@
       <Filter>Textures</Filter>
     </Image>
     <Image Include="Textures\Explosion.png">
+      <Filter>Textures</Filter>
+    </Image>
+    <Image Include="Textures\Boss.png">
       <Filter>Textures</Filter>
     </Image>
   </ItemGroup>

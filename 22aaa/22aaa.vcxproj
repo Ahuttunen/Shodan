@@ -87,6 +87,7 @@
     <ClCompile Include="Backround.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\Users\ttv14saskoh\Desktop\SFML-2.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Explosion.cpp" />
@@ -99,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Backround.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Explosion.h" />
@@ -107,10 +109,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerBullet.h" />
     <ClInclude Include="RandomGene.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Spawner.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Background.png" />
+    <Image Include="Textures\Boss.png" />
     <Image Include="Textures\Bullet.png" />
     <Image Include="Textures\Explosion.png" />
     <Image Include="Textures\Tankinalusta.png" />

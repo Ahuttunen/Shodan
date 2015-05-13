@@ -32,7 +32,7 @@ void Player::update(sf::Time deltatime)
 	sf::Vector2f moves(0, 0);
 	if (Up)
 	{ 
-		if (Sprites.getPosition().y<680)
+		if (Sprites.getPosition().y<600)
 		{
 			moves.y += PlayerSpeed;
 		}
@@ -43,7 +43,7 @@ void Player::update(sf::Time deltatime)
 	}
 	if (Down)
 	{
-		if (Sprites.getPosition().y > 10)
+		if (Sprites.getPosition().y > 0)
 		{
 			moves.y -= PlayerSpeed;
 		}
@@ -54,7 +54,7 @@ void Player::update(sf::Time deltatime)
 	}
 	if (Left)
 	{
-		if (Sprites.getPosition().x < 1200)
+		if (Sprites.getPosition().x < 800)
 		{
 			moves.x += PlayerSpeed;
 		}
@@ -65,7 +65,7 @@ void Player::update(sf::Time deltatime)
 	}
 	if (Right)
 	{
-		if (Sprites.getPosition().x > 15)
+		if (Sprites.getPosition().x > 0)
 		{
 		moves.x -= PlayerSpeed;
 		}
@@ -191,7 +191,7 @@ bool Player::CheckShots(GameObjects& a)
 	while (it !=shots.end())
 	{
 		//Jos ammus ei osu Spriteen vaan menee yli laijan niin se poistetaan
-		if (it->getPos().y < 0 || it->getPos().y>640 || it->getPos().x<0 || it->getPos().x>640)
+		if (it->getPos().y < 0 || it->getPos().y>640 || it->getPos().x<0 || it->getPos().x>840)
 		{
 			std::cout << "Ammus" << std::endl;
 			it = shots.erase(it);

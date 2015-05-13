@@ -80,6 +80,15 @@ void Spawner::checkCollision(Player &p)
 		at++;
 	}
 	}
+	if (p.CheckShots(boss))
+	{
+		boss.GettingHit();
+		if (boss.GetEnemyHealth() <= 0)
+		{
+			boss.Dead();
+		}
+	}
+	
 }
 void Spawner::draw(sf::RenderWindow& myWindow)
 {
@@ -114,5 +123,14 @@ void Spawner::update(sf::Time deltatime)
 	
 		}
 }
+	if (Boss)
+	{
+		boss.update(deltatime);
+	}
 	//Eri waweille joutuu tekemään uuvestaan saman
+}
+void Spawner::SpawnForBoss(sf::RenderWindow &myWindow)
+{
+	boss.draw(myWindow);
+	Boss = true;
 }

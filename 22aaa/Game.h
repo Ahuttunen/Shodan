@@ -26,4 +26,5 @@ private:
 	Player player;
 	Backround background;
 	sf::Clock clock;
+	sf::Clock clock2;
 };

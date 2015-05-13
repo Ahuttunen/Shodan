@@ -4,6 +4,7 @@
 #include <vector>
 #include "Player.h"
 #include "Explosion.h"
+#include "Boss.h"
 #include <SFML/Graphics.hpp>
 class Spawner: public GameObjects
 {
@@ -13,11 +14,14 @@ public:
 	void update(sf::Time deltatime);
 	void checkCollision(Player &p);
 	void draw(sf::RenderWindow& myWindow);
+	void SpawnForBoss(sf::RenderWindow &myWindow);
 private:
 	std::vector<Enemy> Enemyz;
 	std::vector<Explosion>Explositions;
 	sf::Clock timer;
 	sf::Clock timer2;
+	Boss boss;
 	bool Draw;
+	bool Boss;
 };
 
