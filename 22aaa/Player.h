@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "GameObjects.h"
 #include <utility>
+#include <SFML\Audio.hpp>
 class Player : public GameObjects
 {
 public:
@@ -39,4 +40,5 @@ private:
 	int Health;
 	bool Death;
 	sf::Clock clock;
+	//sf::Music gunSound;
 };
