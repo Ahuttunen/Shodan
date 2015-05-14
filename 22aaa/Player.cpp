@@ -120,12 +120,16 @@ void Player::fire(sf::RenderWindow& myWindow)
 {
 	if (Fired == true)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	{
 		Bullet shot(400, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
 
 
 		/*	gunSound.openFromFile("Music/gun-gunshot-02.wav");
 		gunSound.play();*/
+=======
+	{
+>>>>>>> 060978ccc3c01caf335b79130b1b821768eae778
 		Bullet shot(300, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
 		shots.push_back(shot);
 		soundEffect.openFromFile("Sounds/gun-gunshot-02.wav");
