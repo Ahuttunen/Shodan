@@ -119,17 +119,10 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 void Player::fire(sf::RenderWindow& myWindow)
 {
 	if (Fired == true)
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	{
 		Bullet shot(400, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
-
-
-		/*	gunSound.openFromFile("Music/gun-gunshot-02.wav");
-		gunSound.play();*/
-=======
 	{
->>>>>>> 060978ccc3c01caf335b79130b1b821768eae778
 		Bullet shot(300, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
 		shots.push_back(shot);
 		soundEffect.openFromFile("Sounds/gun-gunshot-02.wav");
@@ -183,7 +176,6 @@ float Player::CannonRotation(sf::RenderWindow& myWindow)
 {
 	sf::Vector2f curPos = TowerCannonSprite.getPosition();
 	sf::Vector2f position = myWindow.mapPixelToCoords(sf::Mouse::getPosition(myWindow));
-	//std::cout << position.x << " "<<position.y<< std::endl;
 	const float PI = 3.14159265;
 	float dx = position.x - curPos.x;
 	float dy = position.y - curPos.y;
@@ -214,7 +206,7 @@ bool Player::CheckShots(GameObjects& a)
 		}
 		else if (it ->bounds().intersects(a.bounds()))
 		{
-			//Jos ammus osuu spriteen niin silloin se myˆs poistetaan mutta myˆs l‰hetet‰‰n true value
+			//Jos ammus osuu spriteen niin silloin se my√∂s poistetaan mutta my√∂s l√§hetet√§√§n true value
 			it = shots.erase(it);
 			return true;
 		}
