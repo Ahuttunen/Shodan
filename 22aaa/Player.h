@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include "GameObjects.h"
 #include <utility>
+#include "SFML/Audio.hpp"
 class Player : public GameObjects
 {
 public:
@@ -25,7 +26,6 @@ public:
 	sf::Vector2f GetDirection(sf::RenderWindow& myWindow);
 	void Damage();
 	bool CheckShots(GameObjects&a);
-	bool CheckPlayerStatus();
 private:
 	bool Fired;
 	std::vector<Bullet>shots;
@@ -39,4 +39,5 @@ private:
 	int Health;
 	bool Death;
 	sf::Clock clock;
+	sf::Music soundEffect;
 };

@@ -2,13 +2,15 @@
 
 
 Game::Game(void) :myWindow(sf::VideoMode(800, 600), "Shodan", sf::Style::Close) {}
-
+Game::~Game(void){}
 void Game::run()
 {
 	
-	sf::Clock clock;
 	sf::Time LastUpdate = sf::Time::Zero;
-	
+	music.openFromFile("Sounds/Backgroundmsc.ogg");
+	music.setLoop(true);
+	music.setVolume(25);
+	music.play();
 	while (myWindow.isOpen())
 	{
 		processEvents();
@@ -27,14 +29,14 @@ void Game::run()
 		player.fire(myWindow);
 		background.Scroll();
 		CollisionChecker();
+		
 		}
 		render();
 
 	
 	}
 }
-void Game::update(sf::Time deltatime)
-{}
+void Game::update(sf::Time deltatime){}
 void Game::processEvents()
 {
 
@@ -75,18 +77,29 @@ void Game::render()
 {
 	
 	myWindow.clear();
-	background.draw(myWindow);	
-	spawner.wave(myWindow);
-	spawner.draw(myWindow);
-	if (clock2.getElapsedTime() > sf::seconds(10))
+	background.draw(myWindow);
+	if (clock2.getElapsedTime() < sf::seconds(20))
 	{
-		spawner.SpawnForBoss(myWindow);
+spawner.wave(myWindow);
 	}
+	
+	if (clock2.getElapsedTime() > sf::seconds(20))
+	{
+
+		spawner.wave2(myWindow);
+
+	}
+	if (clock2.getElapsedTime() > sf::seconds(40))
+	{
+			spawner.SpawnForBoss(myWindow);
+	}
+	
+	spawner.draw(myWindow);
 	player.draw(myWindow);
 	myWindow.display();
+	myWindow.setVerticalSyncEnabled(true);
 }
-Game::~Game(void)
-{}
+
 void Game::	CollisionChecker()
 {
 	spawner.checkCollision(player);

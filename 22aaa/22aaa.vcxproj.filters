@@ -16,6 +16,9 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{695b8689-6448-426f-9e0e-8f065db93198}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sounds">
+      <UniqueIdentifier>{31f59f98-aabc-4415-8dca-7f36950aaa3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,6 +54,9 @@
     <ClCompile Include="Boss.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -83,10 +89,10 @@
     <ClInclude Include="Explosion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource1.h">
+    <ClInclude Include="Boss.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Boss.h">
+    <ClInclude Include="Enemy2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,9 +101,6 @@
       <Filter>Textures</Filter>
     </Image>
     <Image Include="Textures\Tankinalusta.png">
-      <Filter>Textures</Filter>
-    </Image>
-    <Image Include="Textures\tankki.png">
       <Filter>Textures</Filter>
     </Image>
     <Image Include="Textures\Bullet.png">
@@ -109,8 +112,24 @@
     <Image Include="Textures\Explosion.png">
       <Filter>Textures</Filter>
     </Image>
-    <Image Include="Textures\Boss.png">
+    <Image Include="Textures\Enemy.png">
       <Filter>Textures</Filter>
     </Image>
+    <Image Include="Textures\Enemy2.png">
+      <Filter>Textures</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sounds\Backgroundmsc.ogg">
+      <Filter>Sounds</Filter>
+    </None>
+    <None Include="Sounds\gameover.ogg">
+      <Filter>Sounds</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\gun-gunshot-02.wav">
+      <Filter>Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -3,19 +3,24 @@
 
 Spawner::Spawner()
 {
+	_Boss = false;
+	
 }
+
 void Spawner::wave(sf::RenderWindow &myWindow)
 {	
-	//Enemyn spawnaamiseen k‰ytet‰‰n randomi generoitia ajallisesti
+	
 	std::vector<Enemy>::iterator it;
-	sf::Time _Time = sf::seconds(rand()%1+2);
-	if (timer.getElapsedTime()>_Time)
+	if (!_Boss)
 	{ 
-	Enemy _Enemy;
-	Enemyz.push_back(_Enemy);
-	timer.restart();
+		sf::Time _Time = sf::seconds(1);
+		if (timer.getElapsedTime()>_Time)
+		{ 
+		Enemy _Enemy;
+		Enemyz.push_back(_Enemy);
+		timer.restart();
+		}
 	}
-
 	it = Enemyz.begin();
 	while (it!=Enemyz.end())
 	{
@@ -32,16 +37,48 @@ void Spawner::wave(sf::RenderWindow &myWindow)
 			it++;
 		}
 	
+	
 	}
 	//Get the local bounding rectangle of the entity.
-
 	//The returned rectangle is in local coordinates, which means that it ignores the transformations(translation, rotation, scale, ...) that are applied to the entity.
 	//In other words, this function returns the bounds of the entity in the entity's coordinate system.
 	//Eri waweille joutuu tekem‰‰n uuvestaan saman
 
 	
 }
+void Spawner::wave2(sf::RenderWindow &myWindow)
+{
+	std::vector<Enemy2>::iterator it;
+	if (!_Boss)
+	{
+		sf::Time _Time = sf::seconds(1);
+		if (timer.getElapsedTime()>_Time)
+		{
+			Enemy2 _Enemy;
+			Enemyz2.push_back(_Enemy);
+			timer.restart();
+		}
 
+	}
+	it = Enemyz2.begin();
+	while (it != Enemyz2.end())
+	{
+		it->draw(myWindow);
+		if (it->bounds().top > myWindow.getSize().y)
+		{
+			std::cout << "Vihollinen poistettiin" << std::endl;
+			it = Enemyz2.erase(it);
+			it = Enemyz2.begin();
+		}
+
+		if (!Enemyz2.empty())
+		{
+			it++;
+		}
+
+
+	}
+}
 void Spawner::checkCollision(Player &p)
 {
 	std::vector<Enemy>::iterator at = Enemyz.begin();
@@ -52,9 +89,7 @@ void Spawner::checkCollision(Player &p)
 			at->GettingHit();
 			if (at->GetEnemyHealth() <=0)
 			{
-				at->DeathtoEnemy();
-				if (at->GetEnemyHealth()==0)
-				{ 
+				
 				if (!Enemyz.empty())
 				{
 					sf::Vector2f aa=at->getPos();
@@ -62,7 +97,7 @@ void Spawner::checkCollision(Player &p)
 					Explositions.push_back(ab);	
 					at = Enemyz.erase(at);
 					at = Enemyz.begin();
-				}
+				
 				}
 			}
 		}
@@ -71,28 +106,62 @@ void Spawner::checkCollision(Player &p)
 	{
 		at = Enemyz.erase(at);
 		at = Enemyz.begin();
-
-			p.Damage();
-		
+		p.Damage();
 	}
 	if (!Enemyz.empty())
 	{
 		at++;
 	}
 	}
+
+	std::vector<Enemy2>::iterator st = Enemyz2.begin();
+
+	while (st != Enemyz2.end())
+	{
+		if (p.CheckShots(*st))
+		{
+			st->GettingHit();
+			if (st->GetEnemyHealth() <= 0)
+			{
+				if (!Enemyz2.empty())
+				{
+					sf::Vector2f aa = st->getPos();
+					Explosion ac(aa);
+					Explositions.push_back(ac);
+					st = Enemyz2.erase(st);
+					st = Enemyz2.begin();
+				}
+			}
+		}
+		if (p.bounds().intersects(st->bounds()))
+		{
+			st = Enemyz2.erase(st);
+			st = Enemyz2.begin();
+			p.Damage();
+		}
+		if (!Enemyz2.empty())
+		{
+			st++;
+		}
+	}
+
+	if (p.bounds().intersects(boss.bounds()))
+	{
+		p.Damage();
+	}
 	if (p.CheckShots(boss))
 	{
-		boss.GettingHit();
-		if (boss.GetEnemyHealth() <= 0)
+		boss.BossGettingHit();
+		if (boss.GetBossHealth() <= 0)
 		{
 			boss.Dead();
 		}
+	
 	}
 	
 }
 void Spawner::draw(sf::RenderWindow& myWindow)
 {
-
 	std::vector<Explosion>::iterator az = Explositions.begin();
 	while (az != Explositions.end())
 	{
@@ -110,9 +179,14 @@ void Spawner::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
-
+	std::vector<Enemy2>::iterator it2 = Enemyz2.begin();
+	while (it2 != Enemyz2.end())
+	{
+		it2->update(deltatime);
+		it2++;
+	}
 	std::vector<Explosion>::iterator az = Explositions.begin();
-	sf::Time ExplosionTimer = sf::seconds(1);
+	sf::Time ExplosionTimer = sf::seconds(2);
 	while (az != Explositions.end())
 	{
 		az->update(deltatime);
@@ -122,15 +196,23 @@ void Spawner::update(sf::Time deltatime)
 			az = Explositions.begin();
 	
 		}
-}
-	if (Boss)
-	{
-		boss.update(deltatime);
 	}
-	//Eri waweille joutuu tekem‰‰n uuvestaan saman
+
+	if (_Boss==true)
+	{
+	boss.update(deltatime);
+	}
+
 }
 void Spawner::SpawnForBoss(sf::RenderWindow &myWindow)
 {
+if (boss.GetBossStatus()==true)
+	{
 	boss.draw(myWindow);
-	Boss = true;
+	_Boss = true;
+	}
+else
+{
+	_Boss = false;
+}
 }

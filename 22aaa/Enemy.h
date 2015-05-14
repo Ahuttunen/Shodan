@@ -16,9 +16,10 @@ public:
 	virtual	int GetEnemyHealth();
 	bool checkBullet(GameObjects& a);
 	void DeathtoEnemy();
-	virtual bool Check();
+	virtual bool CheckEnemy();
 private:
 	bool EnemyisAlive;
+	bool BossisAlive;
 	int EnemyHealth;
 	sf::Clock _clock;
 	std::vector<Bullet>shots;

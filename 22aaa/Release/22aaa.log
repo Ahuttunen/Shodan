@@ -1,15 +1,16 @@
-﻿Build started 13.5.2015 9:09:55.
+﻿Build started 14.5.2015 18:41:17.
      1>Project "C:\Users\Asko\Desktop\klooni\Shodan\22aaa\22aaa.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          E:\Visual studio 2013\VC\bin\CL.exe /c /I"C:\Program Files (x86)\SFML-2.2\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
          Player.cpp
-     1>Player.cpp(132): warning C4305: 'initializing' : truncation from 'double' to 'const float'
-     1>Player.cpp(171): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>Player.cpp(137): warning C4305: 'initializing' : truncation from 'double' to 'const float'
+     1>Player.cpp(179): warning C4305: 'initializing' : truncation from 'double' to 'const float'
        Link:
-         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-system.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.lib" /MACHINE:X86 /SAFESEH Release\Backround.obj
+         E:\Visual studio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files (x86)\SFML-2.2\lib" "sfml-graphics.lib" "sfml-window.lib" "sfml-audio.lib" "sfml-system.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Asko\Desktop\klooni\Shodan\Release\22aaa.lib" /MACHINE:X86 /SAFESEH Release\Backround.obj
          Release\Boss.obj
          Release\Bullet.obj
          Release\Enemy.obj
+         Release\Enemy2.obj
          Release\Explosion.obj
          Release\Game.obj
          Release\GameObjects.obj
@@ -24,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.09
+Time Elapsed 00:00:01.20

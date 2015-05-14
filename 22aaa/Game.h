@@ -8,6 +8,8 @@
 #include "Backround.h"
 #include "Spawner.h"
 #include "Explosion.h"
+#include "Boss.h"
+#include "SFML/Audio.hpp"
 class Game
 {
 public:
@@ -24,7 +26,9 @@ private:
 	sf::RenderWindow myWindow;
 	Spawner spawner;
 	Player player;
+	Boss boss;
 	Backround background;
 	sf::Clock clock;
 	sf::Clock clock2;
+	sf::Music music;
 };

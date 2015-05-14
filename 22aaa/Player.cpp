@@ -5,21 +5,17 @@ Player::Player() :GameObjects()
 {
 	Textures.loadFromFile("Textures/Tankinalusta.png");
 	Sprites.setTexture(Textures);
-	Sprites.setPosition(300.f,150.f);
+	Sprites.setPosition(400.f, 450.f);
 	Sprites.setScale(0.5,0.5);
 	TowerTexture.loadFromFile("Textures/Tankin_torni.png");
 	TowerCannonSprite.setTexture(TowerTexture);
-	TowerCannonSprite.setPosition(335.5f,200.f);
+	TowerCannonSprite.setPosition(435.5f, 500.f);
 	TowerCannonSprite.setScale(0.5, 0.5);
 	TowerCannonSprite.setOrigin(sf::Vector2f(TowerCannonSprite.getTexture()->getSize().x * 0.5f, TowerCannonSprite.getTexture()->getSize().y * 0.5f));
-	std::cout << TowerCannonSprite.getTexture()->getSize().x << " " << TowerCannonSprite.getTexture()->getSize().y << std::endl;
-	std::cout << TowerCannonSprite.getOrigin().x << " " <<  TowerCannonSprite.getOrigin().y<< std::endl;
-	std::cout << Sprites.getTexture()->getSize().x << " " << Sprites.getTexture()->getSize().y << std::endl;
 	Health = 1;
 	Lives = 3;
 	Fired = false;
-	std::cout << "Pelaaja syntyi" << std::endl;
-
+	Death = false;
 }
 
 Player::~Player(void)
@@ -27,8 +23,9 @@ Player::~Player(void)
 }
 void Player::update(sf::Time deltatime)
 {
-	
-	int PlayerSpeed = 200;
+	if (Death==false)
+	{ 
+	int PlayerSpeed = 250;
 	sf::Vector2f moves(0, 0);
 	if (Up)
 	{ 
@@ -84,6 +81,7 @@ void Player::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
+	}
 }
 void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 {
@@ -106,10 +104,12 @@ void Player::PlayerInputs(sf::Keyboard::Key key, bool Pressed)
 }
 void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 {
+	if (Death==false)
+	{ 
 	if (button == sf::Mouse::Left)
 	{
 		Fired = true;
-		std::cout << "Painoit vasenta hiirennappainta" << std::endl;
+	}
 	}
 	else
 	{
@@ -120,8 +120,11 @@ void Player::fire(sf::RenderWindow& myWindow)
 {
 	if (Fired == true)
 	{
-		Bullet shot(300, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
+		Bullet shot(400, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
 		shots.push_back(shot);
+		soundEffect.openFromFile("Sounds/gun-gunshot-02.wav");
+		soundEffect.setVolume(20);
+		soundEffect.play(); 
 		Fired = false;
 	}
 	
@@ -153,6 +156,8 @@ sf::Vector2f Player::GetDirection(sf::RenderWindow& myWindow)
 }
 void Player::draw(sf::RenderWindow& myWindow)
 {
+	if (Death==false)
+	{ 
 	std::vector<Bullet>::iterator it = shots.begin();
 	while (it != shots.end())
 	{
@@ -162,6 +167,7 @@ void Player::draw(sf::RenderWindow& myWindow)
 	}
 myWindow.draw(Sprites);
 myWindow.draw(TowerCannonSprite);
+	}
 }
 float Player::CannonRotation(sf::RenderWindow& myWindow)
 {
@@ -215,27 +221,17 @@ void Player::Damage()
 	Health--;
 	if (Health == 0)
 	{
-	Sprites.setPosition(300.f, 150.f);
-	TowerCannonSprite.setPosition(335.5f, 200.f);
+	Sprites.setPosition(400.f, 450.f);
+	TowerCannonSprite.setPosition(435.5f, 500.f);
 	Lives--;
 	Health = 1;
 	if (Lives ==0)
 	{
-		//tähän jotakin hauskaa
-		std::cout << "Kuolit saatana" << std::endl;
+		soundEffect.openFromFile("Sounds/gameover.ogg");
+		soundEffect.setVolume(150);
+		soundEffect.play();
 		Death = true;
 	}
 	}
 }
 
-bool Player::CheckPlayerStatus()
-{
-	if (Death == true)
-	{
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
-}

@@ -4,7 +4,7 @@
 
 Enemy::Enemy()
 {
-	srand((rand()&740+100));
+	srand((rand()&740+75));
 	Sprites.setPosition((rand()%720+100), - Sprites.getGlobalBounds().height-200.f);
 	EnemyHealth = 1;
 	srand(time(NULL));
@@ -14,7 +14,7 @@ Enemy::~Enemy(void)
 }
 void Enemy::loadTextures()
 {
-Textures.loadFromFile("Textures/Boss.png");
+Textures.loadFromFile("Textures/Enemy.png");
 Sprites.setTexture(Textures);
 Sprites.setOrigin(Textures.getSize().x*0.5,Textures.getSize().y*0.5);
 
@@ -22,7 +22,7 @@ Sprites.setOrigin(Textures.getSize().x*0.5,Textures.getSize().y*0.5);
 void Enemy::update(sf::Time deltatime)
 {
 	sf::Vector2f movement(0, 0);
-	movement.y += 175;
+	movement.y += 375;
 	Sprites.move(movement * deltatime.asSeconds());
 	std::vector<Bullet>::iterator it = shots.begin();
 	while (it !=shots.end())
@@ -30,6 +30,7 @@ void Enemy::update(sf::Time deltatime)
 		it->update(deltatime);
 		it++;
 	}
+
 }
 void Enemy::draw(sf::RenderWindow& myWindow)
 {
@@ -77,7 +78,7 @@ void Enemy::DeathtoEnemy()
 {
 	EnemyisAlive = false;
 }
-bool Enemy::Check()
+bool Enemy::CheckEnemy()
 {
 	return EnemyisAlive;
 }
