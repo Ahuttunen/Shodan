@@ -7,21 +7,11 @@ void Game::run()
 {
 	
 	sf::Time LastUpdate = sf::Time::Zero;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	music.openFromFile("Sounds/Backgroundmsc.ogg");
 	music.setLoop(true);
 	music.setVolume(25);
 	music.play();
-=======
-	//ÄÄNIÄ
-	//music.openFromFile("Music/Backgroundmsc.ogg");
-	//music.setLoop(true);
-	//music.play();
->>>>>>> origin/master
-=======
-	
->>>>>>> 060978ccc3c01caf335b79130b1b821768eae778
 	while (myWindow.isOpen())
 	{
 		processEvents();
