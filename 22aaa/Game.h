@@ -8,8 +8,12 @@
 #include "Backround.h"
 #include "Spawner.h"
 #include "Explosion.h"
+<<<<<<< HEAD
 #include "Boss.h"
 #include "SFML/Audio.hpp"
+=======
+#include "SFML\Audio.hpp"
+>>>>>>> origin/master
 class Game
 {
 public:
@@ -30,5 +34,9 @@ private:
 	Backround background;
 	sf::Clock clock;
 	sf::Clock clock2;
+<<<<<<< HEAD
 	sf::Music music;
+=======
+	/*sf::Music music;*/
+>>>>>>> origin/master
 };

@@ -40,4 +40,5 @@ private:
 	bool Death;
 	sf::Clock clock;
 	sf::Music soundEffect;
+	//sf::Music gunSound;
 };
