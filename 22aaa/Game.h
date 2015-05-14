@@ -8,7 +8,6 @@
 #include "Backround.h"
 #include "Spawner.h"
 #include "Explosion.h"
-#include "SFML\Audio.hpp"
 class Game
 {
 public:
@@ -28,5 +27,4 @@ private:
 	Backround background;
 	sf::Clock clock;
 	sf::Clock clock2;
-	/*sf::Music music;*/
 };

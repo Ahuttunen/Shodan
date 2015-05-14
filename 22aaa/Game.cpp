@@ -8,10 +8,7 @@ void Game::run()
 	
 	sf::Clock clock;
 	sf::Time LastUpdate = sf::Time::Zero;
-	//ÄÄNIÄ
-	//music.openFromFile("Music/Backgroundmsc.ogg");
-	//music.setLoop(true);
-	//music.play();
+	
 	while (myWindow.isOpen())
 	{
 		processEvents();

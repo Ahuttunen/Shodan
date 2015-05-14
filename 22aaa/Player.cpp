@@ -119,9 +119,7 @@ void Player::PlayerMouseInputs(sf::Mouse::Button button, bool Press)
 void Player::fire(sf::RenderWindow& myWindow)
 {
 	if (Fired == true)
-	{//ÄÄNIÄ
-		/*	gunSound.openFromFile("Music/gun-gunshot-02.wav");
-		gunSound.play();*/
+	{
 		Bullet shot(300, GeRot(),GetBulletForCannon(),GetDirection(myWindow));
 		shots.push_back(shot);
 		Fired = false;
